@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Website</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <main>
+      <h1>Nomad Image</h1>
+
+      <h3>What type of Image should I Create?</h3>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="user_input" />
+        <button type="submit">Submit</button>
+      </form>
+      {% if object %}
+      <div style="margin: 60px">
+        {{ object.phrase }}
+        <br />
+        <img
+          style="margin-top: 30px"
+          src="{{object.ai_image.url}}"
+          alt="{{ object.phrase }}"
+        />
+      </div>
+      {%endif%}
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
